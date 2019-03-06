@@ -32,7 +32,7 @@ deploy:
   provider: releases
   api_key:
     secure: shsaQfcjvBZPIXY349mI53kHaDGuVvUEgSMI7NuTLvKDlZMzaJil01R+W/xg7YnzuVom8qylEKZ/axdztxAhnUn5OSRHK2AILvhG3aPPg67J70PYFkVblKxPYdp/ga1Bm/wSDIK0pvgCZIvqKA9FHBuo/XPGS6SM8Y1hOTe/CiOLTJGbC8V/34H4+v2y+Y0LPSea6e2rgSabyvcAYpvYzLcqboWhEEvpdVcqvjGqiHfOiZAAcGTHTFZc5tvrZWe+KeyMuZDhRKsT//jkpqoWrHdfD6B5qlczEL9UjkQ5jb4i5Qf6fQH9+3F8aKAtbYanB+vmGwWuA1QdT/YevUPAqwf9t5YghLV6SD4SqDvR60hmtzfCpY63BybQ3VJDPqqrNbolSKhbmIaTM9sR6xKuTaCTuLSDkmVmpRMYDlmrokxMkeJoP1ZfO4NgKrjicaoYIqVLZdRyhfB5cELNejlb6aO7PemwjLq7itMymACifr+WkuXZHcxcG6IC7pxja6JmCDZQNQlRi82iY+8DwaYCr/ULCxcbNQWxVy9fVtFDy5aJvIDthYsBQknN9fmnV4Nyahl4KmSqREnbUAtwlazIA14LFQhxcL6wQwnG3/XA4b1IxoqstUwc2OaM9x/C62VrMKOxQI0mYnZxRXBKtfLwKGVftuZX93qGZN/kT/aJsNU=
-  file: app/build/outputs/apk/walletlilbrary.apk
+  file: app/build/outputs/apk/release/walletlilbrary.apk
   skip_cleanup: true
   on:
     branch: master
@@ -55,8 +55,8 @@ env:
   - secure: yhOMCZNH2gJ8Ir36bXmj9JkE3mJ8hBQDBDKpwJK7TStZqikzoO1sPMmYYpERY5uhplLeJjnjTF1P3C2GyQy+OSE14VCSLF6rMKizpdkTWRSvfPLy69zkgtGKODT9MsGSqLUg8MJgOVtQlbG4z/rAvQnW0esXgWKQ8ihyEd3haYlzcTuJ+Cp+gBfOAajBlqhsO8j72MXtzhBfriAf3ghWgChniRMuK11JGDDHqUbf3J84b1C+dKesmejXAhbLzJMjdTQEQgzO7m3uPEyGdsh8rQKB166mZkNDifoASPhNDlbcYi0EQnwvCJa66ysKrdqaUjCVgftZxi5/BpunBf27fDkfrpkn21yB+7fwLDTlMOig8zAlMNR+j2BPYfMXlmnCZ2prvRuNHNJmxe7U+2rV3OXtsU7d2o0SLXKPK1UI7Gi1BWbtLA/IlTuHEDPhSadXjVsl3kZfMVpKZjP3h5407mdQfcsOMMZ7rLuDUhQJYBsOWSZakCSLRIvlHTK5fhuD7r5tlxJWk5e+GUlSglnjG4nIxXUpJW1rEwVKRikmBeghdhrGZGAAviYA+YQLKCQtHPguRE/PHFpjg3/9azvgsNsKhWCmCDOp5+eX4hKvR9k5p3rPTo2KDOTfV0IfuBz4veQygvQVz1YDkPkBIdqEs3y7WxB4m8Vy+DSecl2/GD4=
 after_success:
 - cp $TRAVIS_BUILD_DIR/walletlibrary.jks $HOME
-- cd app/build/outputs/apk/
-- ls
+- cd app/build/outputs/apk/release
 - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/walletlibrary.jks -storepass $storepass -keypass $keypass app-release-unsigned.apk walletlibrary #[ demo 是签名文件的key alias]
 - jarsigner -verify app-release-unsigned.apk
+- ls
 - "${ANDROID_HOME}/build-tools/24.0.2/zipalign -v 4 app-release-unsigned.apk walletlilbrary.apk" # apk优化并重命名
