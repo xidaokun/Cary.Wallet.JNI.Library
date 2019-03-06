@@ -27,7 +27,6 @@ before_script:
 - export PATH=$PATH:${ANDROID_NDK_HOME}
 - env
 before_deploy:
-  - mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/walletlibrary.apk
   - mv app/build/outputs/apk/release/app-release.apk app/build/outputs/apk/walletlibrary.apk
   - mv app/release/app-release.apk app/build/outputs/apk/walletlibrary.apk
 deploy:
