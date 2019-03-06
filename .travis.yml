@@ -11,7 +11,8 @@ licenses:
 - android-sdk-license-.+
 - google-gdk-license-.+
 before_install:
-- openssl aes-256-cbc -K $encrypted_28b0ba5a8718_key -iv $encrypted_28b0ba5a8718_iv -in walletlibrary.jks.enc -out walletlibrary.jks -ds
+- openssl aes-256-cbc -K $encrypted_28b0ba5a8718_key -iv $encrypted_28b0ba5a8718_iv
+  -in walletlibrary.jks.enc -out walletlibrary.jks -d
 - echo "y" | sdkmanager "cmake;3.6.4111459"
 - chmod +x gradlew
 - "./gradlew dependencies || true"
@@ -36,4 +37,3 @@ notifications:
   email:
   - xidaokun@elastos.org
   - 15921908346@163.com
-
