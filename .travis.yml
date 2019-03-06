@@ -27,7 +27,7 @@ before_script:
 - export PATH=$PATH:${ANDROID_NDK_HOME}
 - env
 before_deploy:
-- ls app/build/outputs/apk/
+- ls app/build/outputs/apk/release
 deploy:
   provider: releases
   api_key:
