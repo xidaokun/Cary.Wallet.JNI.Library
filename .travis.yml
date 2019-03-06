@@ -32,7 +32,8 @@ deploy:
   provider: releases
   api_key:
     secure: fUok1JMDcKB/EVP+scoOIeGpkHSIXCbsi/oaDOqzt5xk7P2onA7o5GZp0ul0KGFbRoCZxEmve0mcdVJo5gmBb0UchKbWWbQILp8j/ytezpmzfaSRchioh1y/c12ulnPmSgILLvAU5a7tA8aDdExpty/fvYGNi6jSaZhecaTAkcdxTkvOj7qPH49YM9fjx8linSknw4/s6HXoV0LVKv9AeR/56Sm8I1ZVB3ZQRF8C7PZqVQl/bA5JO0SvylL+hTwLOMQ0VOdDPu6RzFZEtyv7sPBuqth0IsdUNvF9WkuZVplk6jfpZtfLLSDoashX36hyLML7g18KZm2eOqGgdsJFVHp1ZseU6RXBGN+OHuQTEnTcYpAOv3FvLRBf9oXT15gr0j7tIQH1I1LP9IkrUM4I4m9J5UsGuVWpIGGz2v2rBvZCPDAjAUCfro9k5hbHyS/EO0MHiutXm7lp4hyrShubp7Lf2buBsFIHbVJc2LOTKW0lgWqCv+MEh9saQrFYzuI6iRoPv5vTeiHzCFjeNXEFFtN+CyRedFcI2q9AuO0OgnkFKOzTRWelWbu3JXAYwOFhCDr0377yqpNTXoiG+xvYYlN0voW9A0KaiDxqZaAnrek+97l9FpOlGfp5ZsEai4CuExl5tviQd1lyuVVGh83SNWjy9l9CrUT1zEdNAkPHB10=
-  file: app/release/app-release.apk
+#  file: app/release/app-release.apk
+  file: app/build/outputs/apk/release/app-release.apk
   skip_cleanup: true
   on:
     repo: xidaokun/Wallet.JNI.Library
