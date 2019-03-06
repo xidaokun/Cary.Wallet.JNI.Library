@@ -1,46 +1,41 @@
 language: android
 sudo: required
-
 android:
   components:
   - build-tools-28.0.3
   - android-28
   - extra-android-m2repository
   - extra-android-support
-
 licenses:
-  - android-sdk-preview-license-.+
-  - android-sdk-license-.+
-  - google-gdk-license-.+
-
+- android-sdk-preview-license-.+
+- android-sdk-license-.+
+- google-gdk-license-.+
 before_install:
-  - echo "y" | sdkmanager "cmake;3.6.4111459"
-  - chmod +x gradlew
-  - "./gradlew dependencies || true"
-
+- openssl aes-256-cbc -K $encrypted_28b0ba5a8718_key -iv $encrypted_28b0ba5a8718_iv
+  -in walletlibrary.jks.enc -out walletlibrary.jks -d
+- openssl aes-256-cbc -K $encrypted_b486aef5df92_key -iv $encrypted_b486aef5df92_iv
+- in walletlibrary.jks.enc -out walletlibrary.jks -d
+- echo "y" | sdkmanager "cmake;3.6.4111459"
+- chmod +x gradlew
+- "./gradlew dependencies || true"
 script:
-  - "./gradlew assembleRelease"
-
+- "./gradlew assembleRelease"
 before_script:
-  - wget https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip
-  - unzip -qq android-ndk-r16b-linux-x86_64.zip
-  - export ANDROID_NDK_HOME=`pwd`/android-ndk-r16b
-  - export LOCAL_ANDROID_NDK_HOME="$ANDROID_NDK_HOME"
-  - export LOCAL_ANDROID_NDK_HOST_PLATFORM="linux-x86_64"
-  - export PATH=$PATH:${ANDROID_NDK_HOME}
-  - env
-
+- wget https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip
+- unzip -qq android-ndk-r16b-linux-x86_64.zip
+- export ANDROID_NDK_HOME=`pwd`/android-ndk-r16b
+- export LOCAL_ANDROID_NDK_HOME="$ANDROID_NDK_HOME"
+- export LOCAL_ANDROID_NDK_HOST_PLATFORM="linux-x86_64"
+- export PATH=$PATH:${ANDROID_NDK_HOME}
+- env
 deploy:
   provider: releases
   api_key:
-  secure: GUr/oIdyiI404vLpNqlk6V8hD+nnyeF56Oi4E3B3Gs+4wGG2n8JoxsOLukfUeeIoEBK7iqtw+y3TcB9bUgKAmh9a1+f9UbpL8p+wouEpc0zah1r4AgB40HmzK90evqzDmLjK3BVJ0DwoS6tvfDoes+brV/8qlNtbVmgeaHzdlLArrsNf0At3JjYDcPMVtqJeMKu5PInoCOC1NGvNXb+wYZZ7NsXKcJt85MaooemboL/M/FKphWkVeF6UeQlgdi32tfUFMUukbCN8TDpxP+UmxC4gq29s2/nVfR8Okt8hWeklq8pBJZ1culIWqgcHzgbzCK++6AhQURwHwtG36f2foSZ9bIc82Ijy97IrBecqEdbMIJXdw6JaUx2gxV8azIsPtmQCEG/dqmfpz3V2MWqDbyyWtpKKMmJre3D7HDcJfSDClB1jmP3RvRKFCpsJyjNmHsAaBzjohpp3/JAYfpm7Bh6lDR5iEQ1Sr0OlCLF0WVRjATkQiWSjDpNA4m70+yCNggbZrf48yOSL4eahtZYF6LFF870NknHuJmZ4bhaSfanuuskCRcrLjE1LyurHdDPFST+oLc8GycNtug340ip4UAGBwlyPwuZTxmUG5ZsinbuFB0acLMClLmLc+zQ4pBu5XNYaQdJQr0XWUNuEbhu1Ompcb7qoJlSXm3MPTlquS0E=
+    secure: l6Zqdf70A8g3Nx8kz3Oq8ERi8a99OefQeUrom4jlCV2rCYO+eOtNwRo7JJpRktbh+73EueEh+REDH8/K5mCHaDtbJEZlP4MYGF2nueTi/UcXtGHaRk4svzGvj495oJoE9cx/4SWYfz1ShdIEpAcnfNN/SCi1a80kHL+9cHv2+q9/2n8GwPz+V5VCMQag8ZAwOxOV+4dMK2yhEVAOI08Ztcgd8kzofcKGpP1O0T2+c5AgGBp6NXYm7IsJ5JZALxMTW33OCup3ZGt3VDmgM+mny/PYyGeEJNwkip/hHzz45DEbHKFNxdrs4bd5ul6AEGehxKpVDgypIfsRWNuBzPPd3g8M05bILbB3BQjF7rDDXobPjFDPZ7+5phpi2zWK6VNKhJCqjgGQBrYC3Ys0BLtIppaSH4jtjyex61PXT3PuBgeSPoO03zAsq79/iKgq/fj5sfVI/Fw/BCJ/7AyrULGSPNOdDNtcM/YLcE3leWt0lEbz08vsvrfMiOyQ0lhv8yIZ+0/WG5nvzPRdY59thePJ/KF2bu9QwSWSbM5eKpuMEZFyNYJOpzwvBkw/3qeXknO53ZqfnpKqiqj/03XArxbntHFespNWw4kKaJ1+/oUCLTVK2Beod2p1vOURGgu/kOJidexFb/8O0m2cJ+qdJy+/SbDs8j2gsm8hAoIW4xmX1tk=
   file: app/build/outputs/apk/app-release.apk
-  skip_cleanup: true
   on:
     repo: xidaokun/Wallet.JNI.Library
-    tags: true
-
 notifications:
- email:
+  email:
   - xidaokun@elastos.org
   - 15921908346@163.com
