@@ -1,0 +1,9 @@
+/build
+Todos
+/exp.gradle
+/.externalNativeBuild/
+.gradle
+.idea
+local.properties
+walletlibrary.jks
+gradle.properties

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+   <ListView
+       android:id="@+id/word_list"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginBottom="100dp"/>
+
+    <EditText
+        android:id="@+id/show_word"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/verify"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/trans"
+        android:onClick="verify"
+        android:text="验证"/>
+
+    <Button
+        android:id="@+id/trans"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:onClick="trans"
+        android:layout_alignParentBottom="true"
+        android:text="trans"/>
+
+</RelativeLayout>
